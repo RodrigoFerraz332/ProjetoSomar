@@ -1,0 +1,12 @@
+#telaLogin{
+width: auto;
+position: absolute;
+top: 55%;
+left:50%;
+transform: translate(-50%, -50%);
+}
+
+body{
+background-image: url("../imagens/fundo.png");	
+}
+
