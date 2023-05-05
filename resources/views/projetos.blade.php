@@ -12,12 +12,12 @@
         <div class="container-fluid row pb-5 mb-5">
 			<nav class="navbar nav-justified fixed-top navbar-light bg-white border border-dark">
 			<a class="navbar-brand col mx-5">
-				<img src="../imagens/fecomerciors.png" alt="Fecomercio" class="w-50 mx-5">
+				<img src="../imagens/logofecomerciors.jpg" alt="Fecomercio" class="w-50 mx-5">
 			</a>
 			<a class="navbar-brand col mx-5" href="../index.html">
 				<img src="../imagens/logoCapa.png" alt="logo SOMAR" class="w-50 mx-5">
 			</a>
-			<a class="navbar-brand col mx-5" href="login.html">
+			<a class="navbar-brand col mx-5" href="login">
 				<img src="../imagens/login.png" alt="Botao login" class="w-50 mx-5">
 			</a>
 			</nav>
@@ -27,16 +27,23 @@
 		<p class="display-4 pt-5 pt-5 text-primary text-center">NOSSOS PROJETOS</p>
 		</div>
 			
-			<div class="container-fluid row mx-auto text-center">
-			@foreach ($odss as $ods)
-    		<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/{{ $ods->imagem}}" alt="nomeODS{{$ods->nomeODS}}" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			{{$ods->nomeODS}}
-			</figure>
-			</a>
-				@endforeach	
+		<div class="container">
+            <div class="row justify-content-start">
+            @foreach ($odss as $ods)
+                <div class="col-3">
+                    <a class="col mx-auto" href="{{ route('ods.show', ['id' => $ods->idODS]) }}">
+                    <figure class="figure">
+                        <div class="text-center">
+                            <img src="/imagens/{{ $ods->imagem}}" alt="{{$ods->nomeODS}}" class="w-50 pt-5 mt-5 rounded">
+                        </div>
+                    <figcaption class="figcaption text-center">
+                    {{$ods->nomeODS}}
+                    </figure>
+                    </a>
+                </div>
+            @endforeach
+            </div>
+        </div>
 			<!-- <a class="col mx-auto" href="#">
 			<figure class="figure">
 				<img src="../imagens/ods1.jpg" alt="ODS Erradicação da Pobreza" class="w-50 pt-5 mt-5">
