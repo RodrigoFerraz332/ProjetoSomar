@@ -3,6 +3,8 @@ use App\Http\Controllers\OdsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\PaginaInicialController;
+use App\Http\Controllers\ProjetoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 |
 */
 
-Route::get('/', function () {
+Route::get('/projetos', function () {
     $odss = DB::select('SELECT * FROM odss');
     return view('projetos')->with('odss', $odss);
 });
@@ -25,6 +27,16 @@ Route::controller(OdsController::class)->group(function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+Route::controller(PaginaInicialController::class)->group(function () {
+    Route::get('/', 'paginainicial')->name('index');
+});
+
+// Route::controller(ProjetoController::class)->group(function () {
+//     Route::get('/projetos', 'index')->name('projetos.index');
+// });
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

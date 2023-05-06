@@ -11,23 +11,28 @@
         <div class="container-fluid row">
 			<nav class="navbar nav-justified fixed-top navbar-light bg-white border border-dark">
 			<a class="navbar-brand col mx-5">
-				<img src="/imagens/fecomerciors2.png" alt="Fecomercio" class="w-50 mx-5">
+				<img src="imagens/fecomerciors.png" alt="Fecomercio" class="w-50 mx-5">
 			</a>
 			<a class="navbar-brand col mx-5">
-				<img src="/imagens/logoCapa.png" alt="logo SOMAR" class="w-50 mx-5">
+				<img src="imagens/logoCapa.png" alt="logo SOMAR" class="w-50 mx-5">
 			</a>
 			<a class="navbar-brand col mx-5" href="{{ route('login') }}">
-				<img src="/imagens/login.png" alt="Botao login" class="w-50 mx-5">
+				<img src="imagens/login.png" alt="Botao login" class="w-50 mx-5">
 			</a>
+			
+		</div>
 			</nav>
 		</div>
 		
 		<div class="container flex pt-5 mt-5">
-			<img src="/imagens/logoCapa.png" alt="Logo Somar" class="d-block mt-5 mx-auto pt-4 px-5">
+			<img src="imagens/logoCapa.png" alt="Logo Somar" class="d-block mt-5 mx-auto pt-4 px-5">
 		</div>
 		
 		<div class="container text-justify mt-5 my-3 px-5">
-			
+			<p>O SOMAR é o novo programa de impacto social do Sistema Fecomércio-RS/Sesc/Senac.
+			Por meio dele, serão executados projetos que transformem realidades das comunidades
+			em que o sistema atua e que contribuam para os Objetivos de Desenvolvimento Sustentável,
+			da ONU e bandeiras Fecomércio.</p>
 		</div>
 		
 		<div class="container my-3 px-5">
@@ -39,20 +44,15 @@
 		<div class="container my-3 px-5">
 			<p class="text-monospace text-justify">São potencializados em parceria com outras partes interessadas, fortalecendo a imagem e o protagonismo do Sistema Comércio.</p>
 		</div>
-		
 		<div>
+		<a href="/projetos"> <p class="display-6 mt-5 text-primary text-center" >CONHEÇA MAIS DOS NOSSOS PROJETOS</p> </a>
+		</div>
+		<!-- <div>
 		<p class="display-6 mt-5 text-primary text-center ">CONHEÇA MAIS DOS NOSSOS PROJETOS</p>
 		</div>
-		<p>
-			{{$ods->nomeODS}}</p>
-			<p>
-			{{$ods->descricao}}</p>
-			@foreach ($projetos as $projeto)
-                
-				<p>
-                {{$projeto->descricao}}
-                </p>
-            @endforeach
+		<div> -->
+		
+		
 		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

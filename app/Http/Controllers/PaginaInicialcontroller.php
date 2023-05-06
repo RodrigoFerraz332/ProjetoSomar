@@ -6,13 +6,11 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
-class ProjetoController extends BaseController
+class PaginaInicialController extends BaseController
 {
     
-    public function index()
+    public function paginainicial()
     {
-        return view("projetos")->with("projetos",0);
+        return view("paginainicial")->with("projetos",0);
     }
 }
-
-

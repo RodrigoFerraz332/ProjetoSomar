@@ -12,12 +12,12 @@
         <div class="container-fluid row pb-5 mb-5">
 			<nav class="navbar nav-justified fixed-top navbar-light bg-white border border-dark">
 			<a class="navbar-brand col mx-5">
-				<img src="../imagens/logofecomerciors.jpg" alt="Fecomercio" class="w-50 mx-5">
+				<img src="../imagens/fecomerciors2.png" alt="Fecomercio" class="w-50 mx-5">
 			</a>
 			<a class="navbar-brand col mx-5" href="../index.html">
 				<img src="../imagens/logoCapa.png" alt="logo SOMAR" class="w-50 mx-5">
 			</a>
-			<a class="navbar-brand col mx-5" href="login">
+			<a class="navbar-brand col mx-5" href="{{ route('login') }}">
 				<img src="../imagens/login.png" alt="Botao login" class="w-50 mx-5">
 			</a>
 			</nav>
