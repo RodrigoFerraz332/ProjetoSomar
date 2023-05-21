@@ -47,6 +47,8 @@
 			{{$ods->nomeODS}}</p>
 			<p>
 			{{$ods->descricao}}</p>
+			<p>Total de Projetos por ODS {{count($projetos)}}</p>
+			<p>Total de Projetos {{$total->total}}</p>
 			@foreach ($projetos as $projeto)
                 
 				<p>
