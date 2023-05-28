@@ -11,7 +11,7 @@
         <div class="container-fluid row">
 			<nav class="navbar nav-justified fixed-top navbar-light bg-white border border-dark">
 			<a class="navbar-brand col mx-5">
-				<img src="imagens/fecomerciors.png" alt="Fecomercio" class="w-50 mx-5">
+				<img src="imagens/fecomerciors2.png" alt="Fecomercio" class="w-50 mx-5">
 			</a>
 			<a class="navbar-brand col mx-5">
 				<img src="imagens/logoCapa.png" alt="logo SOMAR" class="w-50 mx-5">

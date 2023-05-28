@@ -52,6 +52,9 @@
 			@foreach ($projetos as $projeto)
                 
 				<p>
+                {{$projeto->nomeUnidade}} - {{$projeto->cidade}}
+                </p>
+				<p>
                 {{$projeto->descricao}}
                 </p>
             @endforeach
