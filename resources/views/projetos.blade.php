@@ -14,7 +14,7 @@
 			<a class="navbar-brand col mx-5">
 				<img src="../imagens/fecomerciors2.png" alt="Fecomercio" class="w-50 mx-5">
 			</a>
-			<a class="navbar-brand col mx-5" href="../index.html">
+			<a class="navbar-brand col mx-5" href="{{ route('index') }}">
 				<img src="../imagens/logoCapa.png" alt="logo SOMAR" class="w-50 mx-5">
 			</a>
 			<a class="navbar-brand col mx-5" href="{{ route('login') }}">
