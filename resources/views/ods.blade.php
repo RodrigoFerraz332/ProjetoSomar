@@ -46,13 +46,7 @@
 		</div>
 
 		<div class="container my-3 px-5">
-		@foreach ($projetos as $projeto)
-			<p class="topicosODS">
-                Nome do Projeto: </p> {{$projeto->nomeProjeto}}
-                
-                
-			@endforeach
-		
+	
 		
 		<p class="topicosODS">
 			Nome ODS:</p> <p> {{$ods->nomeODS}} </p>
@@ -71,12 +65,27 @@
 				<p class="topicosODS">
                 Descrição: </p> {{$projeto->descricao}}
 
-			@if ($projeto->nomeImagens)
-			    @foreach(explode(',', $projeto->nomeImagens) as $info) 
-				    <option>{{$info}}</option>
-			    @endforeach
-			@endif
-                
+				@if ($projeto->nomeImagens)
+				
+				<p class="topicosODS">
+					Imagens
+					<div class="container">
+            <div class="row justify-content-start">
+					@foreach(explode(',', $projeto->nomeImagens) as $info) 
+					<div class="col-12">
+					
+						
+							
+							<img src="/imagens/{{ $info}}" alt="{{$info}}" class=" pt-5 mt-5 rounded">
+							
+						
+						
+					</div>
+					
+					@endforeach
+</div></div>
+				@endif
+					
 				
             @endforeach
 
