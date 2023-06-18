@@ -46,37 +46,45 @@
 		</div>
 
 		<div class="container my-3 px-5">
+		
 	
 		
-		<p class="topicosODS">
-			Nome ODS:</p> <p> {{$ods->nomeODS}} </p>
-		<p class="topicosODS">
-			Causa de Atuação: </p> {{$ods->descricao}}
-			<p class="topicosODS">Total de Projetos por ODS </p> {{count($projetos)}}
-			<p class="topicosODS">Total de Projetos </p> {{$total}}
+		
+			
+		
+			<p class="topicosODS">Projetos da ODS: </p> {{count($projetos)}}
+			
 			@foreach ($projetos as $projeto)
+			<p class="topicosODS">
+				Projeto:</p> <p> {{$projeto->nomeProjeto}} </p>
+				<p class="topicosODS">
+                Cidade: </p> {{$projeto->cidade}}
+				<p class="topicosODS">
+                Causa de Atuação: </p> {{$projeto->causaAtuacao}}
+
+				<p class="topicosODS">
+                Resumo: </p> {{$projeto->descricao}}
 			<p class="topicosODS">
                 ODSs Vinculadas: </p> {{$projeto->idsODS}}
                 
                 
+				
+				
 				<p class="topicosODS">
-                Nome da Unidade: </p> {{$projeto->nomeUnidade}} - {{$projeto->cidade}}
-                
-				<p class="topicosODS">
-                Descrição: </p> {{$projeto->descricao}}
+                Parceiros: </p> {{$projeto->parceiros}}
 
 				@if ($projeto->nomeImagens)
 				
 				<p class="topicosODS">
-					Imagens
+					Imagens:
 					<div class="container">
             <div class="row justify-content-start">
 					@foreach(explode(',', $projeto->nomeImagens) as $info) 
-					<div class="col-12">
+					<div class="col mx-auto">
 					
 						
 							
-							<img src="/imagens/{{ $info}}" alt="{{$info}}" class=" pt-5 mt-5 rounded">
+							<img src="/imagens/{{ $info}}" alt="{{$info}}" class="w-100 d-block mt-5 mx-auto pt-4 px-5">
 							
 						
 						
@@ -86,7 +94,7 @@
 </div></div>
 				@endif
 					
-				
+				<hr>
             @endforeach
 
 		</div>

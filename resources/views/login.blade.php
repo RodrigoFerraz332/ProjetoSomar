@@ -42,6 +42,7 @@
 		  </div>
 		  <button type="submit" class="btn btn-primary btn-block mx-auto">Enviar</button>
 		  <button type="button" class="btn btn-outline-danger mx-auto">Redefinir Senha</button>
+		  <a class="btn btn-primary" href="{{ route('register') }}" role="button">Novo Cadastro</a>
 		</form>
 		</div>
 			</div>

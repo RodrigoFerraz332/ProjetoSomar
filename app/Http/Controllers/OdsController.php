@@ -43,17 +43,20 @@ class OdsController extends Controller
                 'u.cidade',
                 'u.nomeUnidade',
                 'p.nomeProjeto',
-                DB::raw('GROUP_CONCAT(DISTINCT po2.idODS ORDER BY po2.idODS) AS idsODS'),
+                'p.parceiros',
+                'p.causaAtuacao',
+                DB::raw("GROUP_CONCAT(DISTINCT od.nomeODS ORDER BY od.idODS SEPARATOR ', ') AS idsODS "),
                 DB::raw('GROUP_CONCAT(DISTINCT ip.nomeImagem ORDER BY ip.idImagensProjetos) AS nomeImagens')
             )
             ->from('projet_odss', 'po')
             ->join('projetos as p', 'po.idProjeto', '=', 'p.idProjeto')
             ->join('unidades as u', 'u.idUnidade', '=', 'p.idUnidade')
             ->join('projet_odss as po2', 'p.idProjeto', '=', 'po2.idProjeto')
+            ->join('odss as od', 'po2.idODS', '=', 'od.idODS')
             ->leftJoin('imagensprojetos as ip', 'p.idProjeto', '=', 'ip.idProjeto')
             ->where('po.idODS', $id)
             ->where('p.aprovado', 1)
-            ->groupBy('po2.idProjeto', 'p.descricao', 'p.nomeProjeto', 'u.cidade', 'u.nomeUnidade', 'ip.idProjeto')
+            ->groupBy('po2.idProjeto', 'p.descricao', 'p.nomeProjeto', 'u.cidade', 'u.nomeUnidade', 'ip.idProjeto','p.parceiros','p.causaAtuacao')
             ->get();
         
         $total = DB::table('projetos')->where('aprovado', 1)->count();
