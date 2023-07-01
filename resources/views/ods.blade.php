@@ -84,7 +84,7 @@
 					
 						
 							
-							<img src="/imagens/{{ $info}}" alt="{{$info}}" class="w-100 d-block mt-5 mx-auto pt-4 px-5">
+							<img src="/imagens/projetos/{{ $info}}" alt="{{$info}}" class="w-100 d-block mt-5 mx-auto pt-4 px-5">
 							
 						
 						

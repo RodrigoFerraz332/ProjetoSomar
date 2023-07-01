@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/admin/projetos', [ProjetoController::class, 'cadastro'])->name('projeto.cadastro');
+    Route::get('/admin/projetos', [ProjetoController::class, 'edit'])->name('projeto.form');
 
 });
 

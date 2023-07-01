@@ -22,10 +22,6 @@
 			</a>
 			</nav>
 		</div>
-		
-		<div>
-		<p class="display-4 pt-5 pt-5 text-primary text-center">NOSSOS PROJETOS</p>
-		</div>
 			
 		<div class="container">
             <div class="row justify-content-start">
