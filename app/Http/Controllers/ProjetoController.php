@@ -69,8 +69,7 @@ class ProjetoController extends BaseController
        
     }catch(Exception $e){
         $this->messageBag->add(0,$e->getMessage());
-        dd($e);
-        return redirect()->back()->with('errors',$this->messageBag );
+        return redirect()->back();
         
     }
     return redirect('/admin/projetos')
@@ -80,7 +79,7 @@ class ProjetoController extends BaseController
     }
     public function edit(Request $request): View
     {
-        return view('cadastro', [
+        return view(' Dashboard', [
             'user' => $request->user(),
             'errors'=>$this->messageBag
 
