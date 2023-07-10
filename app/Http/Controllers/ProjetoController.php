@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CausaDeAtuacao;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -13,6 +14,10 @@ use App\Models\Projeto;
 use Illuminate\Support\MessageBag;
 use Illuminate\View\View;
 use App\Models\ImagensProjetos;
+use App\Models\Ods;
+use App\Models\ProjetoCausa;
+use App\Models\ProjetoOds;
+
 class ProjetoController extends BaseController
 {
     protected $messageBag;
@@ -34,14 +39,14 @@ class ProjetoController extends BaseController
     }
     public function cadastro (Request $request)
     {
+        
         try{
        $projeto=new Projeto(); 
         $projeto->nomeProjeto = $request->nomeProjeto;
         $projeto->parceiros = $request->parceiros;
-        $projeto->causaAtuacao = $request->causaAtuacao;
         $projeto->descricao = $request->descricao;
         $projeto->linkVideo = $request->linkVideo;
-        $projeto->aprovado = $request->aprovado ?? 1;
+        $projeto->aprovado = 1;
         $projeto->idUnidade = $request->idUnidade ?? 1;
         $projeto->idUsuario=$request->user()->id;
       
@@ -54,7 +59,7 @@ class ProjetoController extends BaseController
 
                 $imageName = md5($image->getClientOriginalName() . strtotime("now")) . "." . $extension;
     
-                $image->move(public_path('imagens/projetos'), $imageName);
+                $image->move(public_path('storage/imagens/projetos'), $imageName);
                 $Imagens=new ImagensProjetos();
                 $Imagens->nomeImagem=$imageName;
                 $Imagens->idProjeto=$projeto->idProjeto;
@@ -65,10 +70,28 @@ class ProjetoController extends BaseController
 
            
         }
+        foreach ($request->ods as $ods) {
+            $projetoOds=new ProjetoOds();
+            $projetoOds->idProjeto=$projeto->idProjeto;
+            $projetoOds->idODS=$ods;
+            $projetoOds->save();
+
+
+        }
+
+        foreach ($request->causas as $causa) {
+            $projetocausa=new ProjetoCausa();
+            $projetocausa->idProjeto=$projeto->idProjeto;
+            $projetocausa->idcausa_de_atuacao=$causa;
+            $projetocausa->save();
+
+
+        }
 
        
     }catch(Exception $e){
         $this->messageBag->add(0,$e->getMessage());
+        dd($e);
         return redirect()->back();
         
     }
@@ -79,9 +102,14 @@ class ProjetoController extends BaseController
     }
     public function edit(Request $request): View
     {
-        return view(' Dashboard', [
+        
+        $odss= Ods::all();
+        $causas= CausaDeAtuacao::all();
+        return view('cadastrar-projeto', [
             'user' => $request->user(),
-            'errors'=>$this->messageBag
+            'errors'=>$this->messageBag,
+            'odss'=>$odss,
+            'causas'=>$causas
 
         ]);
     }

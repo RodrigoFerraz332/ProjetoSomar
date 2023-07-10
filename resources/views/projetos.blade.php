@@ -22,7 +22,7 @@
 			</a>
 			</nav>
 		</div>
-			
+		@include('project.partials.busca')
 		<div class="container">
             <div class="row justify-content-start">
             @foreach ($odss as $ods)
@@ -40,136 +40,7 @@
             @endforeach
             </div>
         </div>
-			<!-- <a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods1.jpg" alt="ODS Erradicação da Pobreza" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Erradicaçao da Pobreza
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods2.jpg" alt="ODS Fome Zero" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Fome Zero
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods3.jpg" alt="ODS Boa Saúde e Bem-Estar" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Boa saúde e Bem-Estar
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods4.jpg" alt="ODS Educação de Qualidade" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Educação de Qualidade
-			</figure>
-			</a>
 			
-			<div class="container-fluid row mx-auto text-center">
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods5.jpg" alt="ODS Igualdade de Gênero" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Igualdade de Gênero
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods6.jpg" alt="ODS Água Limpa e Sanitária" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Água Limpa e Sanitária
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods7.jpg" alt="ODS Energia Acessível e Limpa" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Energia Acessível e Limpa
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods8.jpg" alt="ODS Emprego Digno" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Empregos Dignos
-			</figure>
-			</a>
-			</div>
-			
-			<div class="container-fluid row mx-auto text-center">
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods9.jpg" alt="ODS Indústria e Inovação" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Indústria e Inovação
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods10.jpg" alt="ODS Redução das Desigualdades" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Redução das Desigualdades
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods11.jpg" alt="ODS Cidades Sustentáveis" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Cidades Sustentáveis
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods12.jpg" alt="ODS Consumo e Produção responsáveis" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Consumo e Produção Responsáveis
-			</figure>
-			</a>
-			</div>
-			
-			<div class="container-fluid row mx-auto text-center">
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods13.jpg" alt="ODS Combate Às Alterações Climáticas" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Combate às Alterações Climáticas
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods14.jpg" alt="ODS Vida de Baixo D'água" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Erradicaçao da pobreza
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods15.jpg" alt="ODS Vida sobre a Terra" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Vida sobre a Terra
-			</figure>
-			</a>
-			<a class="col mx-auto" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods16.jpg" alt="ODS Paz e Justiça" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Paz e Justiça
-			</figure>
-			</a>
-			</div>
-			
-			<div class="container-fluid row mx-auto text-center">
-			<a class="col-3" href="#">
-			<figure class="figure">
-				<img src="../imagens/ods17.jpg" alt="ODS Parcerias e Metas" class="w-50 pt-5 mt-5">
-			<figcaption class="figcaption text-center">
-			Parcerias e Metas
-			</figure>
-			 </a>-->
 		</div>
 		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

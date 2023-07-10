@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Models\Unidade;
 
 class RegisteredUserController extends Controller
 {
@@ -20,7 +21,11 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('register');
+        $unidades= Unidade::all();
+        return view('register', [
+            'unidades'=>$unidades
+
+        ]);
     }
 
     /**
@@ -40,7 +45,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'idPerfil_de_Acesso'=>2
+            'idPerfil_de_Acesso'=>2,
+            'idunidade'=>$request->unidade,
         ]);
 
         event(new Registered($user));

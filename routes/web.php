@@ -18,8 +18,11 @@ use App\Http\Controllers\ProjetoController;
 
 Route::get('/projetos', function () {
     $odss = DB::select('SELECT * FROM odss');
-    return view('projetos')->with('odss', $odss);
-});
+    $causas = DB::select('SELECT * FROM causa_de_atuacao');
+    return view('projetos')
+    ->with('odss', $odss)
+    ->with('causas',$causas);
+})->name('ods.index');
 Route::controller(OdsController::class)->group(function () {
     Route::get('/ods/{id}', 'show')->name('ods.show');
 });
@@ -27,6 +30,11 @@ Route::controller(OdsController::class)->group(function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/aprovar', function () {
+    return view('aprovar');
+});
+
 
 
 

@@ -36,15 +36,13 @@
 		</div>
 		
 		<div class="container my-3 px-5">
-			<p class="text-monospace text-justify">Os Objetivos de Desenvolvimento Sustentável (ODS) possuem como propósito final a transformação de uma realidade vigente,
-			sempre levando em consideração as questões sociais, ambientais e de governança das instituições. 
-			Sua execução está atrelada aos serviços ofertados pelo Sistema e seus públicos atendidos.</p>
+			<p class="text-monospace text-justify">{{$ods->descricao}}</p>
 		</div>
-		
+		<!--
 		<div class="container my-3 px-5">
 			<p class="text-monospace text-justify pb-3 mb-3">São potencializados em parceria com outras partes interessadas, fortalecendo a imagem e o protagonismo do Sistema Comércio.</p>
 		</div>
-
+        -->
 		<div class="container my-3 px-5">
 		
 	
@@ -59,15 +57,37 @@
 				Projeto:</p> <p> {{$projeto->nomeProjeto}} </p>
 				<p class="topicosODS">
                 Cidade: </p> {{$projeto->cidade}}
-				<p class="topicosODS">
-                Causa de Atuação: </p> {{$projeto->causaAtuacao}}
+				
+				
 
 				<p class="topicosODS">
-                Resumo: </p> {{$projeto->descricao}}
+                Descrição: </p> {{$projeto->descricao}}
+				@if ($projeto->causas)
+				
+				<p class="topicosODS">
+					Causa de Atuação:
+</p>
+					@foreach(explode(',', $projeto->causas) as $causa) 
+					<p>
+					{{$causa}}
+					</p>
+					
+					@endforeach
+
+				@endif
+
+
+				<p class="topicosODS">
+                Vídeo:
+                <a href="{{ $projeto->linkVideo }}">{{ $projeto->linkVideo }}</a>
+                </p>
+
 			<p class="topicosODS">
                 ODSs Vinculadas: </p> {{$projeto->idsODS}}
-                
-                
+
+				<p class="topicosODS">
+                Causas: </p> {{$projeto->causas}}
+
 				
 				
 				<p class="topicosODS">
@@ -84,7 +104,7 @@
 					
 						
 							
-							<img src="/imagens/projetos/{{ $info}}" alt="{{$info}}" class="w-100 d-block mt-5 mx-auto pt-4 px-5">
+							<img src="{{ Storage::url('imagens/projetos/'.$info) }}" alt="{{$info}}" class="w-100 d-block mt-5 mx-auto pt-4 px-5">
 							
 						
 						
@@ -94,6 +114,7 @@
 </div></div>
 				@endif
 					
+				
 				<hr>
             @endforeach
 
