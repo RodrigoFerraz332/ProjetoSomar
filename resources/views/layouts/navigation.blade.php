@@ -1,32 +1,41 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<link href="../css/estilo.css" rel="stylesheet" type="text/css">   
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
+                <!-- Logo 
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <x-application-logo class="" />
                     </a>
                 </div>
+                 -->
+                    
+                 <div class="shrink-0 flex items-center">
+				<img src="/imagens/logoCapa.png" alt="Logo Somar" id="logomenu" class="block">
+                    </div>
+                    <!-- 
 
-                <!-- Navigation Links -->
+                Navigation Links 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+                -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('projeto.form')" :active="request()->routeIs('projeto.form')">
+                    <x-nav-link :href="route('projeto.form')" :active="request()->routeIs('projeto.form')" class="testecadastro">
                         {{ __('Cadastrar Projeto') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('ods.index')" :active="request()->routeIs('ods.index')">
+                    <x-nav-link :href="route('ods.index')" :active="request()->routeIs('ods.index')" class="testecadastro">
                         {{ __('ODSs') }}
                     </x-nav-link>
                 </div>
+                
             </div>
 
             <!-- Settings Dropdown -->
@@ -34,7 +43,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div class="testecadastro">{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">

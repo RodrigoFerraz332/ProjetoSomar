@@ -9,8 +9,9 @@ use Illuminate\Routing\Controller as BaseController;
 class IndexController extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
     public function index()
     {
-        return view("index",["hello"=>"word"]);
+        return view('index', ['hello' => 'word']);
     }
 }

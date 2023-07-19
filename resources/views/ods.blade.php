@@ -4,15 +4,17 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-		<link href="../css/formulario.css" rel="stylesheet" type="text/css">	
+		<link href="../css/formulario.css" rel="stylesheet" type="text/css">
+		<link href="../css/estilo.css" rel="stylesheet" type="text/css"> 	
 		<title>Programa SOMAR</title>	
 	</head> 
 	
 	<body>	
-        <div class="container-fluid row">
+    
+		<div class="container-fluid row">
 			<nav class="navbar nav-justified fixed-top navbar-light bg-white border border-dark">
 			<a class="navbar-brand col mx-5">
-				<img src="/imagens/fecomerciors2.png" alt="Fecomercio" class="w-50 mx-5">
+				<img src="/imagens/fecomerciors4.png" alt="Fecomercio" class="w-50 mx-5">
 			</a>
 			<a class="navbar-brand col mx-5" href="{{ route('index') }}">
 				<img src="/imagens/logoCapa.png" alt="logo SOMAR" class="w-50 mx-5">
@@ -20,15 +22,20 @@
 			<a class="navbar-brand col mx-5" href="{{ route('login') }}">
 				<img src="/imagens/login.png" alt="Botao login" class="w-50 mx-5">
 			</a>
+			
 			</nav>
-		</div>
-		
+		</div>		
 		<div class="container flex pt-5 mt-5">
-		<img src="/imagens/{{ $ods->imagem}}" alt="{{$ods->nomeODS}}" class="w-25 d-block mt-5 mx-auto pt-4 px-5 rounded">
+		@if ($ods)
+    <img src="/imagens/{{ $ods->imagem }}" alt="{{ $ods->nomeODS }}" class="w-25 d-block mt-5 mx-auto pt-4 px-5 rounded">
+        @endif
+
 		</div>
 
 		<div>
+		@if ($ods)
 		<p class="display-6 mt-3 text-primary text-center "> {{$ods->nomeODS}} </p>
+		@endif
 		</div>
 		
 		<div class="container text-justify mt-5 my-3 px-5">
@@ -36,7 +43,9 @@
 		</div>
 		
 		<div class="container my-3 px-5">
+		@if ($ods)
 			<p class="text-monospace text-justify">{{$ods->descricao}}</p>
+			@endif
 		</div>
 		<!--
 		<div class="container my-3 px-5">
@@ -44,11 +53,6 @@
 		</div>
         -->
 		<div class="container my-3 px-5">
-		
-	
-		
-		
-			
 		
 			<p class="topicosODS">Projetos da ODS: </p> {{count($projetos)}}
 			
@@ -114,8 +118,10 @@
 </div></div>
 				@endif
 					
+				<div id="linha">
 				
-				<hr>
+				</div>
+				
             @endforeach
 
 		</div>

@@ -1,10 +1,12 @@
 <?php
+
 use App\Http\Controllers\OdsController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PaginaInicialController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetoController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,13 +21,21 @@ use App\Http\Controllers\ProjetoController;
 Route::get('/projetos', function () {
     $odss = DB::select('SELECT * FROM odss');
     $causas = DB::select('SELECT * FROM causa_de_atuacao');
+
     return view('projetos')
-    ->with('odss', $odss)
-    ->with('causas',$causas);
+        ->with('odss', $odss)
+        ->with('causas', $causas);
 })->name('ods.index');
+
+Route::controller(OdsController::class)->group(function () {
+    Route::get('/ods/busca', 'filter')->name('ods.filter');
+});
+
+
 Route::controller(OdsController::class)->group(function () {
     Route::get('/ods/{id}', 'show')->name('ods.show');
 });
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,9 +44,6 @@ Route::get('/dashboard', function () {
 Route::get('/aprovar', function () {
     return view('aprovar');
 });
-
-
-
 
 Route::controller(PaginaInicialController::class)->group(function () {
     Route::get('/', 'paginainicial')->name('index');

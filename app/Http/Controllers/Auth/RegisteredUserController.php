@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Unidade;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -12,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
-use App\Models\Unidade;
 
 class RegisteredUserController extends Controller
 {
@@ -21,9 +21,10 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        $unidades= Unidade::all();
+        $unidades = Unidade::all();
+
         return view('register', [
-            'unidades'=>$unidades
+            'unidades' => $unidades,
 
         ]);
     }
@@ -45,8 +46,8 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'idPerfil_de_Acesso'=>2,
-            'idunidade'=>$request->unidade,
+            'idPerfil_de_Acesso' => 2,
+            'idunidade' => $request->unidade,
         ]);
 
         event(new Registered($user));

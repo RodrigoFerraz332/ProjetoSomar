@@ -1,21 +1,21 @@
-<form method="get" action="{{ route('projeto.cadastro') }}" class="mt-6 space-y-6">
-        @csrf
-        @method('get')
+<form method="get" action="{{ route('ods.filter') }}" class="mt-6 space-y-6">
+<link href="../css/estilo.css" rel="stylesheet" type="text/css">      
        
-
-        <div>
-            <label for="ods" class="block mb-2 text-sm font-medium text-gray-900">Selecione uma ODS:</label>
-            <select id="ods" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="ods[]" multiple>
-                
+        
+            <div class="container flex pt-5 mt-5 mb-5 px-5">
+            <label for="ods" id="filtro" class="mt-5 mb-3 pt-5 px-5  text-center">Selecione uma ODS:</label>
+            <select id="ods" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="ods">
+                <option value="">Escolha uma ODS</option>
                 @foreach ($odss as $ods)
                 <option value="{{ $ods->idODS }}">{{ $ods->codODS }} - {{ $ods->nomeODS }}</option>
                 @endforeach
 
             </select>
         </div>
-        <div>
-            <label for="causas" class="block mb-2 text-sm font-medium text-gray-900">Selecione uma Causa de Atuação:</label>
-            <select id="causas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="causas[]" multiple>
+        <div class="container flex px-5">
+            <label for="causas" id="filtro" class="px-5 text-center">Selecione uma Causa de Atuação:</label>
+            <select id="causas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="causas">
+            <option value="">Escolha uma Causa de Atuação</option>
                 
                 @foreach ($causas as $causa)
                 <option value="{{ $causa->idcausa_de_atuacao }}">{{ $causa->nomeCausa }}</option>
@@ -26,7 +26,8 @@
 
         
         <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Buscar Projeto') }}</x-primary-button>
+            <x-primary-button id="botaobusca" class="btn btn-primary btn-lg">{{ __('Buscar Projeto') }}</x-primary-button>
+            
         </div>
     </form>
 	

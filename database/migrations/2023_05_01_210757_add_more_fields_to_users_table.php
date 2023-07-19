@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreign('perfil_de_acesso_id')
-        ->references('idPerfil_de_Acesso')
-        ->on('perfil_de_acessos');
+                ->references('idPerfil_de_Acesso')
+                ->on('perfil_de_acessos');
             //
         });
     }
