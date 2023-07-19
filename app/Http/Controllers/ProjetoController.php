@@ -48,6 +48,7 @@ class ProjetoController extends BaseController
         $projeto->aprovado = 1;
         $projeto->idUnidade = $request->idUnidade ?? 1;
         $projeto->idUsuario = $request->user()->id;
+        
 
         $projeto->save();
         if ($request->hasFile('fotos')) {

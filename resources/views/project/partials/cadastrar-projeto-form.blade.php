@@ -57,6 +57,8 @@
             <x-text-input id="link_video" name="linkVideo" required type="text" class="mt-1 block w-full"/>
         </div>
 
+      
+
 
         <div>
             <label class="testeprojetos" for="fotos">Upload de Fotos (máximo de 5 fotos)</label>
