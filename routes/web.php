@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjetoController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\MasterRegisteredUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,11 +32,9 @@ Route::controller(OdsController::class)->group(function () {
     Route::get('/ods/busca', 'filter')->name('ods.filter');
 });
 
-
 Route::controller(OdsController::class)->group(function () {
     Route::get('/ods/{id}', 'show')->name('ods.show');
 });
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -49,12 +48,21 @@ Route::controller(PaginaInicialController::class)->group(function () {
     Route::get('/', 'paginainicial')->name('index');
 });
 
+Route::group(['middleware' => ['role:master']], function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+
+    Route::get('master_register', [MasterRegisteredUserController::class, 'create'])
+        ->name('master_register');
+
+    Route::post('master_register', [MasterRegisteredUserController::class, 'store']);
+});
+
 // Route::controller(ProjetoController::class)->group(function () {
 //     Route::get('/projetos', 'index')->name('projetos.index');
 // });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/admin/projetos', [ProjetoController::class, 'cadastro'])->name('projeto.cadastro');

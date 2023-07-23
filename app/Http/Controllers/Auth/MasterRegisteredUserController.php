@@ -13,9 +13,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 
-class RegisteredUserController extends Controller
+class MasterRegisteredUserController extends Controller
 {
     /**
      * Display the registration view.
@@ -23,9 +24,11 @@ class RegisteredUserController extends Controller
     public function create(): View
     {
         $unidades = Unidade::all();
+        $roles = Role::all()->pluck('name');
 
-        return view('register', [
+        return view('master_register', [
             'unidades' => $unidades,
+            'roles'=>$roles,
 
         ]);
     }
@@ -48,12 +51,12 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'idunidade' => $request->unidade,
-        ])->findByName('master')
-        ->givePermissionTo('create users');
+        ])
+        ->assignRole ($request->role);
 
         event(new Registered($user));
 
-        Auth::login($user);
+       
 
         return redirect(RouteServiceProvider::HOME);
     }

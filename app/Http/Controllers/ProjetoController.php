@@ -48,7 +48,7 @@ class ProjetoController extends BaseController
         $projeto->aprovado = 1;
         $projeto->idUnidade = $request->idUnidade ?? 1;
         $projeto->idUsuario = $request->user()->id;
-        
+        $projeto->publico_alvo = $request->publico_alvo;
 
         $projeto->save();
         if ($request->hasFile('fotos')) {
@@ -86,15 +86,20 @@ class ProjetoController extends BaseController
 
     } catch (Exception $e) {
         $this->messageBag->add(0, $e->getMessage());
-       
 
         return redirect()->back();
 
     }
+    $odss = Ods::all();
+    $causas = CausaDeAtuacao::all();
 
-    return redirect('/admin/projetos')
+    $this->messageBag->add('success', 'Projeto cadastrado com sucesso!');
+
+    return view('cadastrar-projeto')
         ->with('success', 'Projeto cadastrado com sucesso!')
-        ->withErrors($this->messageBag);
+        ->with('odss', $odss)
+        ->with('causas', $causas)
+        ->with('message', $this->messageBag);
 
     }
 
@@ -103,10 +108,12 @@ class ProjetoController extends BaseController
 
         $odss = Ods::all();
         $causas = CausaDeAtuacao::all();
+        $request->user()->getPermissionsViaRoles();
+
 
         return view('cadastrar-projeto', [
             'user' => $request->user(),
-            'errors' => $this->messageBag,
+            'message' => $this->messageBag,
             'odss' => $odss,
             'causas' => $causas,
 

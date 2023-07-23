@@ -42,10 +42,18 @@ text-align: center;
 }
 
 #botaobusca{
-color: darkblue;    
+background-image: url("../imagens/buscaprojeto.png");    
+position: absolute;
+right: 18.7%;
+
+
 }
 #linha{
     width: 100%;
     border-bottom: 3px solid #000000;
     padding-top: 5%;
+}
+
+#botaocadastrar{
+    background-image: url("../imagens/buscaprojeto.png");  
 }

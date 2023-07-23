@@ -47,6 +47,8 @@
 			<p class="text-monospace text-justify">{{$ods->descricao}}</p>
 			@endif
 		</div>
+
+		
 		<!--
 		<div class="container my-3 px-5">
 			<p class="text-monospace text-justify pb-3 mb-3">São potencializados em parceria com outras partes interessadas, fortalecendo a imagem e o protagonismo do Sistema Comércio.</p>
@@ -61,6 +63,11 @@
 				Projeto:</p> <p> {{$projeto->nomeProjeto}} </p>
 				<p class="topicosODS">
                 Cidade: </p> {{$projeto->cidade}}
+
+				<p class="topicosODS">
+                Publico Alvo:
+                </p>{{ $projeto->publicoAlvo }}
+                
 				
 				
 
@@ -84,8 +91,18 @@
 
 				<p class="topicosODS">
                 Vídeo:
-                <a href="{{ $projeto->linkVideo }}">{{ $projeto->linkVideo }}</a>
+                <a href="{{ $projeto->linkVideo }}"></a>
                 </p>
+				@if ($projeto->linkVideo)
+    @php
+        preg_match('/(?:youtube\.com\/(?:embed\/|watch\?v=|watch\?.+&v=)|youtu\.be\/)([^&\n?#]+)/', $projeto->linkVideo, $match);
+        $videoId = isset($match[1]) ? $match[1] : null;
+    @endphp
+
+    <!-- Player de vídeo incorporado -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ $videoId }}" frameborder="0" allowfullscreen></iframe>
+@endif
+
 
 			<p class="topicosODS">
                 ODSs Vinculadas: </p> {{$projeto->idsODS}}

@@ -25,8 +25,8 @@
         </div>
 
         
-        <div class="flex items-center gap-4">
-            <x-primary-button id="botaobusca" class="btn btn-primary btn-lg">{{ __('Buscar Projeto') }}</x-primary-button>
+        <div class="container my-5">
+            <button type="submit" id="botaobusca" class="btn btn-primary btn-lg text-right">{{ __('Buscar Projeto') }}</button>
             
         </div>
     </form>

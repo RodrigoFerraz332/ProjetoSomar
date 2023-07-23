@@ -1,14 +1,15 @@
 <section>
     <header>
+    <link href="../css/estilo.css" rel="stylesheet" type="text/css"> 
         <h2 class="text-lg font-medium text-gray-900">
             {{ __('Cadastrar Projeto') }}
         </h2>
     </header>
-    @if ($errors->any())
+    @if ($message->any())
     <div class="alert alert-danger">
         <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+            @foreach ($message->all() as $message)
+                <li>{{ $message}}</li>
             @endforeach
         </ul>
     </div>
@@ -25,6 +26,11 @@
         <div>
             <x-input-label for="parceiros" :value="__('Parceiros')" class="testeprojetos" />
             <x-text-input id="parceiros" name="parceiros" required type="text" class="mt-1 block w-full"/>
+        </div>
+
+        <div>
+            <x-input-label for="publicoAlvo" :value="__('Publico Alvo')" class="testeprojetos" />
+            <x-text-input id="publicoAlvo" name="publico_alvo" required type="text" class="mt-1 block w-full"/>
         </div>
 
         <div>
@@ -66,8 +72,8 @@
         </div>
        
 
-        <div class="flex items-center gap-4">
-            <x-primary-button>{{ __('Cadastrar Projeto') }}</x-primary-button>
+        <div  class="container my-5">
+            <x-primary-button >{{ __('Cadastrar Projeto') }}</x-primary-button>
         </div>
        
     </form>

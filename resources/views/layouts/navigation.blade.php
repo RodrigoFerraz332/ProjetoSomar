@@ -30,11 +30,22 @@
                         {{ __('Cadastrar Projeto') }}
                     </x-nav-link>
                 </div>
+               
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('ods.index')" :active="request()->routeIs('ods.index')" class="testecadastro">
                         {{ __('ODSs') }}
                     </x-nav-link>
                 </div>
+                
+                @role('master')
+    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+        <x-nav-link :href="route('master_register')" :active="request()->routeIs('master_register')" class="testecadastro">
+            {{ __('Cadastrar Usuário') }}
+        </x-nav-link>
+    </div>
+@endrole
+                
+                
                 
             </div>
 
