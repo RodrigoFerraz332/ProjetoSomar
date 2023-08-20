@@ -25,7 +25,10 @@ class User extends Authenticatable
         'password',
         'idPerfil_de_Acesso',
         'idunidade',
+        
     ];
+    protected $guard_name = 'web';
+    
 
     /**
      * The attributes that should be hidden for serialization.
@@ -44,10 +47,18 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        
     ];
+    
+    
 
+
+    
+    
     public function perfilDeAcesso()
     {
         return $this->belongsTo(PerfilDeAcesso::class, 'idPerfil_de_Acesso');
     }
+    
+    
 }

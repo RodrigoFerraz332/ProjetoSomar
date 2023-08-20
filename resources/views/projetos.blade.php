@@ -22,6 +22,7 @@
 			</a>
 
 			</nav>
+			
 		</div>
 		@include('project.partials.busca')
 		<div class="container">
@@ -33,15 +34,21 @@
                         <div class="text-center">
                             <img src="/imagens/{{ $ods->imagem}}" alt="{{$ods->nomeODS}}" class="w-50 pt-5 mt-5 rounded">
                         </div>
+						<!--
                     <figcaption class="figcaption text-center">
                     {{$ods->nomeODS}}
+						-->
                     </figure>
                     </a>
                 </div>
             @endforeach
             </div>
         </div>
-			
+		<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('projeto.form')" :active="request()->routeIs('projeto.form')" class="testecadastro">
+                        {{ __('Cadastrar Projeto') }}
+                    </x-nav-link>
+                </div>
 		</div>
 		
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

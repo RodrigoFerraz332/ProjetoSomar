@@ -53,6 +53,7 @@ class MasterRegisteredUserController extends Controller
             'idunidade' => $request->unidade,
         ])
         ->assignRole ($request->role);
+        
 
         event(new Registered($user));
 

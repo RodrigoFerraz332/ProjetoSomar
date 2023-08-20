@@ -38,14 +38,15 @@ class ProjetoController extends BaseController
 
     public function cadastro(Request $request)
     {
-
+        $odss = Ods::all();
+    $causas = CausaDeAtuacao::all();
         try {
        $projeto = new Projeto();
         $projeto->nomeProjeto = $request->nomeProjeto;
         $projeto->parceiros = $request->parceiros;
         $projeto->descricao = $request->descricao;
         $projeto->linkVideo = $request->linkVideo;
-        $projeto->aprovado = 1;
+        $projeto->aprovado = 0;
         $projeto->idUnidade = $request->idUnidade ?? 1;
         $projeto->idUsuario = $request->user()->id;
         $projeto->publico_alvo = $request->publico_alvo;
@@ -83,15 +84,20 @@ class ProjetoController extends BaseController
             $projetocausa->save();
 
         }
+        
+   
 
     } catch (Exception $e) {
-        $this->messageBag->add(0, $e->getMessage());
-
-        return redirect()->back();
+        $this->messageBag->add("error", $e->getMessage());
+        //dd($e);
+        return view('cadastrar-projeto')
+        ->with('success', 'Projeto cadastrado com sucesso!')
+        ->with('odss', $odss)
+        ->with('causas', $causas)
+        ->with('message', $this->messageBag);
 
     }
-    $odss = Ods::all();
-    $causas = CausaDeAtuacao::all();
+    
 
     $this->messageBag->add('success', 'Projeto cadastrado com sucesso!');
 
@@ -100,8 +106,29 @@ class ProjetoController extends BaseController
         ->with('odss', $odss)
         ->with('causas', $causas)
         ->with('message', $this->messageBag);
+        
+        
 
     }
+    public function aprovarProjeto($id)
+    {
+       
+            // Localize o projeto pelo ID
+            $projeto = Projeto::findOrFail($id);
+
+            
+                $projeto->aprovado = true;
+                $projeto->save();
+
+            
+
+        // Redirecione o usuário de volta à página do projeto
+        return redirect()->route('projetos.lista')
+            ->with('message', $this->messageBag);
+    }
+    
+    
+    
 
     public function edit(Request $request): View
     {
@@ -119,4 +146,12 @@ class ProjetoController extends BaseController
 
         ]);
     }
+    public function aprovarProjetos()
+    {
+        return view('aprovar')
+        ->with('projetos', Projeto::all())
+        ->with('message', $this->messageBag);
+    }
+   
+   
 }

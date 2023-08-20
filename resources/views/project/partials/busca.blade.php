@@ -3,9 +3,9 @@
        
         
             <div class="container flex pt-5 mt-5 mb-5 px-5">
-            <label for="ods" id="filtro" class="mt-5 mb-3 pt-5 px-5  text-center">Selecione uma ODS:</label>
+            <label for="ods" id="filtro" class="mt-5 mb-3 pt-5 px-5  text-center">Selecione um ODS:</label>
             <select id="ods" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="ods">
-                <option value="">Escolha uma ODS</option>
+                <option value="">Escolha um ODS</option>
                 @foreach ($odss as $ods)
                 <option value="{{ $ods->idODS }}">{{ $ods->codODS }} - {{ $ods->nomeODS }}</option>
                 @endforeach

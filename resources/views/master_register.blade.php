@@ -26,7 +26,7 @@
 		<div class="card sm" id="telaLogin">
 		<!--<img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">-->
 		<div class="card-body border-dark rounded">
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('master_register') }}">
         @csrf
         <div class="form-group">
     <label for="nome">Nome</label>

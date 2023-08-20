@@ -40,9 +40,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/aprovar', function () {
-    return view('aprovar');
-});
+
 
 Route::controller(PaginaInicialController::class)->group(function () {
     Route::get('/', 'paginainicial')->name('index');
@@ -50,9 +48,15 @@ Route::controller(PaginaInicialController::class)->group(function () {
 
 Route::group(['middleware' => ['role:master']], function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/admin/projetos/aprovar', [ProjetoController::class, 'aprovarProjetos'])->name('projetos.lista');
+    Route::get('/admin/projetos/aprovar/{id}', [ProjetoController::class, 'aprovarProjeto'])->name('projetos.lista.aprovar');
+    
+    
+    
 
     Route::get('master_register', [MasterRegisteredUserController::class, 'create'])
         ->name('master_register');
+      
 
     Route::post('master_register', [MasterRegisteredUserController::class, 'store']);
 });
@@ -61,13 +65,16 @@ Route::group(['middleware' => ['role:master']], function () {
 //     Route::get('/projetos', 'index')->name('projetos.index');
 // });
 
+
 Route::middleware('auth')->group(function () {
     //Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/admin/projetos', [ProjetoController::class, 'cadastro'])->name('projeto.cadastro');
     Route::get('/admin/projetos', [ProjetoController::class, 'edit'])->name('projeto.form');
+    
 
 });
+
 
 require __DIR__.'/auth.php';
