@@ -34,7 +34,7 @@
         </div>
 
         <div>
-            <label for="ods" class="testeprojetos" >Selecione uma ODS:</label>
+            <label for="ods" class="testeprojetos" >Selecione os ODSs Correspondentes:</label>
             <select id="ods" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="ods[]" required  multiple>
                 
                 @foreach ($odss as $ods)
@@ -44,7 +44,7 @@
             </select>
         </div>
         <div>
-            <label for="causas" class="testeprojetos">Selecione uma Causa de Atuação:</label>
+            <label for="causas" class="testeprojetos">Selecione as Causas de Atuação:</label>
             <select id="causas" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" name="causas[]" required multiple>
                 
                 @foreach ($causas as $causa)

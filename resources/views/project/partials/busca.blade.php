@@ -25,7 +25,11 @@
         </div>
 
         
-        <div class="container my-5">
+        <div class="container pb-1 my-5">
+            <x-nav-link :href="route('projeto.form')" :active="request()->routeIs('projeto.form')" id="botaocad" class="btn btn-primary btn-lg text-left">
+                        {{ __('Cadastrar Projeto') }}
+                    </x-nav-link>
+                
             <button type="submit" id="botaobusca" class="btn btn-primary btn-lg text-right">{{ __('Buscar Projeto') }}</button>
             
         </div>

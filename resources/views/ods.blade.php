@@ -41,7 +41,7 @@
 		<div class="container text-justify mt-5 my-3 px-5">
 			
 		</div>
-		<
+		
 		<div class="container my-3 px-5">
 		@if ($ods)
 			<p class="text-monospace text-justify">{{$ods->descricao}}</p>
